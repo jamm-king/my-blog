@@ -19,3 +19,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Client(models.Model):
+    name = models.CharField(max_length=50, unique=True, null=False)
+    state = models.CharField(max_length=50, default="sleep", null=False)
+
+    def __str__(self):
+        return self.name

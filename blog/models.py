@@ -24,6 +24,7 @@ class Post(models.Model):
 class Client(models.Model):
     name = models.CharField(max_length=50, unique=True, null=False)
     state = models.CharField(max_length=50, default="sleep", null=False)
+    host = models.CharField(max_length=50, default="0.0.0.0", null=False)
 
     def __str__(self):
         return self.name

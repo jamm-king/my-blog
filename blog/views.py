@@ -3,6 +3,7 @@ from django.utils import timezone
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+import requests
 from .models import Post, Client
 from .forms import PostForm
 from .serializers import PostSerializer, ClientSerializer
@@ -86,3 +87,15 @@ def client_detail(request, pk):
     elif request.method == 'DELETE':
         client.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['POST'])
+def video_stream(request):
+    client = Client.objects.get(pk=1)
+    headers = {
+        'Content-Type': 'image/jpeg'
+    }
+    timeout_seconds = 10
+    res = requests.post(url='http://' + client.host + ":8080", headers=headers, data=request.body, timeout=timeout_seconds)
+    print(res)
+    return Response({"message": "Request processed successfully"}, status=200)

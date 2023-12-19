@@ -11,4 +11,4 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
 class ClientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Client
-        fields = ['id', 'name', 'state']
+        fields = ['id', 'name', 'state', 'host']

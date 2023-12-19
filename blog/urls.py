@@ -13,4 +13,5 @@ urlpatterns = [
     path('api_root/', include(router.urls)),
     path('api_root/client/', views.client_list),
     path('api_root/client/<int:pk>/', views.client_detail),
+    path('api_root/video_stream/', views.video_stream),
 ]
